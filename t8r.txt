@@ -1,0 +1,31 @@
+
+
+
+
+
+
+
+(
+0
+3
+:
+=
+C
+J
+M
+Total character:91
+Word count:14
+Line:4
+--original--
+There are 3Apples.
+There is an orange1.
+ORange1 is sweet.
+My phone number is 0912-345-678.
+--lower case--
+there are 3apples.
+there is an orange1.
+orange1 is sweet.
+my phone number is 0912-345-678.
+--count--
+upper case to lower case:6
+
