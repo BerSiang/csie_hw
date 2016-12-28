@@ -1,10 +1,11 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 int main(int argc, char **argv) {
 		int iMode = 0, cMode = 0, nMode = 0, vMode = 0;
 		int i, j;
-		FILE fPtr = fopen(*(argv + argc - 1), "r");
+		FILE *fPtr = fopen(*(argv + argc - 1), "r");
 		char *pattern = *(argv + argc - 2);
 		char *buf = malloc(20000 * sizeof(char));
 		for(i = 1; i < argc - 2; i++) {
@@ -33,49 +34,35 @@ int main(int argc, char **argv) {
 				exit(EXIT_FAILURE);
 		}
 		while(fgets(buf, 20000, fPtr) != 0) {
-		}
-}
-}
-if((cMode && nMode) || (cMode && vMode)) {
-		printf("error");
-		exit(EXIT_FAILURE);
-}
-while(fgets(buf, 20000, fPtr) != 0) {
-		int imHere = 0, line = 0;// head = 0;
-		for(i = 0; i < strlen(buf); i++) {
-				if(buf[i] == pattern[0] && imHere == 0) {
-				}
-		}
-}
-if((cMode && nMode) || (cMode && vMode)) {
-		printf("error");
-		exit(EXIT_FAILURE);
-}
-while(fgets(buf, 20000, fPtr) != 0) {
-		int imHere = 0, line = 0, imHereC = 0;// head = 0;
-		for(i = 0; i < strlen(buf); i++) {
-				if(buf[i] == pattern[0] && imHere == 0) {
-						imHere = 1;
-						j = 0; 
-				}       
-				if(toLowerCase(buf[i]) == toLowerCase(pattern[0]) && imHere == 0 && iMode == 1) {
-						imHere = 1;
-						j = 0; 
-				}       
-				if(head == 1) {
-						if(buf[i] != pattern[j++]) {
-								imHere = 0;
+				int imHere = 0, line = 0, imHereC = 0;// head = 0;
+				for(i = 0; i < strlen(buf); i++) {
+						if(buf[i] == pattern[0] && imHere == 0) {
+								imHere = 1;
+								j = 0; 
 						}       
-				}       
-				if(head == 1 && iMode == 1) {
-						if(toLower(buf[i]) != toLowerCase(pattern[j++])) {
-								imHere = 0;
+						if(tolower(buf[i]) == tolower(pattern[0]) && imHere == 0 && iMode == 1) {
+								imHere = 1;
+								j = 0; 
+						}       
+						if(imHere == 1) {
+								if(buf[i] != pattern[j++]) {
+										imHere = 0;
+								}       
+						}       
+						if(imHere == 1 && iMode == 1) {
+								if(tolower(buf[i]) != tolower(pattern[j++])) {
+										imHere = 0;
+								}
+						}
+				}
+				line++;
+				if(imHere == 1) {
+						imHereC++;
+						if(nMode == 1) {
+								printf("%d:", line);
 						}
 				}
 		}
-		line++;
-		if(imHere == 1) {
-				imHereC++;
-				if(nMode == 1) {
-						printf("%d:
+		return 0;
+}
 
