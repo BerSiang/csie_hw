@@ -11,6 +11,10 @@ int main(int argc, char **argv) {
 				printf("error\n");
 				exit(EXIT_FAILURE);
 		}
+		if(argc < 3) {
+				printf("error\n");
+				exit(EXIT_FAILURE);
+		}
 		char *pattern = *(argv + argc - 2);
 		char *buf = malloc(20000 * sizeof(char));
 		for(i = 1; i < argc - 2; i++) {
@@ -95,6 +99,14 @@ int main(int argc, char **argv) {
 		free(buf);
 		if(cMode == 1) {
 				printf("%d\n", vMode == 1 ? line - imHereC : imHereC);
+		}
+		else {
+				if(vMode == 0 && imHereC == 0) {
+						printf("\n");
+				}
+				else if(vMode == 1 && line - imHereC == 0) {
+						printf("\n");
+				}
 		}
 		return 0;
 }
