@@ -40,17 +40,15 @@ int main(int argc, char **argv) {
 			}
 		}
 	}
-	if((cMode && nMode)) {
+	if((cMode == 1 && nMode == 1)) {
 		printf("error\n");
 		exit(EXIT_FAILURE);
 	}
 	while(fgets(buf, 20000, fPtr) != 0) {
-		int imHere = 0;// head = 0;
+		int imHere = 0;
 		j = 0;
-		//printf("%c", buf[i]);
 		if(strstr(buf, pattern) != 0 && imHere == 0 && iMode == 0) {
 			imHere = 1;
-			//printf("%c:%c\n", buf[i], pattern[0]);
 		}       
 		if(strcasestr(buf, pattern) != 0 && imHere == 0 && iMode == 1) {
 			imHere = 1;
@@ -64,13 +62,11 @@ int main(int argc, char **argv) {
 				printf("%s", buf);
 			}
 		}
-		else if(vMode == 1) {
-			if(cMode != 1) {
-				if(nMode == 1) {
-					printf("%d:", line + 1);
-				}
-				printf("%s", buf);
+		else if(cMode == 0 && vMode == 1) {
+			if(nMode == 1) {
+				printf("%d:", line + 1);
 			}
+			printf("%s", buf);
 		}
 		line++;
 	}
@@ -79,14 +75,12 @@ int main(int argc, char **argv) {
 	if(cMode == 1) {
 		printf("%d\n", vMode == 1 ? line - imHereC : imHereC);
 	}
-	else {
-		if(vMode == 0 && imHereC == 0) {
-			printf("\n");
-		}
-		else if(vMode == 1 && line - imHereC == 0) {
-			printf("\n");
-		}
+	/*if(vMode == 0 && imHereC == 0) {
+		printf("\n");
 	}
+	if(vMode == 1 && line - imHereC == 0) {
+		printf("\n");
+	}*/
 	return 0;
 }
 
