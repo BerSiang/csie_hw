@@ -1,0 +1,11 @@
+apple
+apple
+-apple
+banana
+city
+-city
+-city
+-dark
+any
+any
+any
